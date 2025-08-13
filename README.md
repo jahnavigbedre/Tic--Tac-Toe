@@ -235,10 +235,6 @@ For production deployment, consider:
 - Update documentation as needed
 - Ensure AI training convergence before committing models
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - **Stable Baselines3** for the DQN implementation
@@ -263,12 +259,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Custom board sizes (4x4, 5x5)
 - [ ] AI difficulty slider with real-time adjustment
 
-## 📧 Contact
-
-For questions, suggestions, or collaboration opportunities, please open an issue or reach out via:
-- GitHub Issues: [Create an issue](https://github.com/yourusername/ai-tictactoe/issues)
-- Email: your.email@example.com
-
 ---
 
 **Enjoy playing against our AI! Can you beat the machine? 🤖🎯**
+
