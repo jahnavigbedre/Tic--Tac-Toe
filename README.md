@@ -25,6 +25,7 @@ A sophisticated Tic Tac Toe game featuring a reinforcement learning AI opponent 
 - **Mode Selection**: Easy switching between game modes
 - **Custom Player Names**: Personalize your gaming experience
 
+
 ## 🚀 Quick Start
 
 ### Prerequisites
@@ -32,12 +33,12 @@ A sophisticated Tic Tac Toe game featuring a reinforcement learning AI opponent 
 - pip package manager
 - Web browser for the frontend
 
-### Installation
+### Installation & Running
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/ai-tictactoe.git
-   cd ai-tictactoe
+   git clone https://github.com/jahnavigbedre/Tic--Tac-Toe.git
+   cd Tic--Tac-Toe
    ```
 
 2. **Install dependencies**
@@ -50,14 +51,26 @@ A sophisticated Tic Tac Toe game featuring a reinforcement learning AI opponent 
    python train_agent.py
    ```
 
-4. **Start the Flask server**
+4. **Start the backend (Flask API server)**
    ```bash
    python app.py
+   # By default, runs on http://localhost:5000
    ```
 
-5. **Open the game**
-   - Open `index.html` in your web browser
-   - Or visit `http://localhost:5000` if serving through Flask
+5. **Start the frontend (HTML server)**
+   - You must serve `index.html` using a local web server (not by double-clicking the file), otherwise browser security will block API requests.
+   - You can use Python's built-in HTTP server:
+     ```bash
+     # In the project directory (where index.html is located):
+     python -m http.server 8000
+     # Now open http://localhost:8000 in your browser
+     ```
+   - The frontend is configured to call the backend API at `http://localhost:5000/move`.
+   - You can run the frontend server on any port (e.g., 8000, 3000, etc.), but the backend must be running on port 5000 for the API calls to work (or update the JS code if you change the backend port).
+
+**Note:**
+- If you open `index.html` directly as a file (file://...), the browser will block API requests to the backend. Always use a local server for the frontend.
+- CORS is enabled in the backend to allow cross-origin requests from your frontend server.
 
 ## 🎮 How to Play
 
@@ -81,14 +94,14 @@ A sophisticated Tic Tac Toe game featuring a reinforcement learning AI opponent 
 ## 🏗️ Project Structure
 
 ```
-ai-tictactoe/
+Tic--Tac-Toe/
 ├── app.py                 # Flask web server and API
 ├── index.html            # Modern web interface
-├── tictactoe_env.py      # RL environment with multiple AI strategies
+├── Tic--Tac-Toe_env.py      # RL environment with multiple AI strategies
 ├── train_agent.py        # AI training script
 ├── test.py              # Model testing script
 ├── requirements.txt      # Python dependencies
-├── tictactoe_agent.zip   # Pre-trained AI model
+├── Tic--Tac-Toe_agent.zip   # Pre-trained AI model
 └── README.md            # This file
 ```
 
@@ -157,10 +170,10 @@ Get AI move for current board state.
 
 ```python
 from stable_baselines3 import DQN
-from tictactoe_env import SmartTicTacToeEnv
+from Tic--Tac-Toe_env import SmartTic--Tac-ToeEnv
 
 # Create environment with desired opponent strategy
-env = SmartTicTacToeEnv(opponent_strategy='smart')
+env = SmartTic--Tac-ToeEnv(opponent_strategy='smart')
 
 # Train model
 model = DQN("MlpPolicy", env, verbose=1)
@@ -174,11 +187,11 @@ model.save("your_model_name")
 
 ```python
 from stable_baselines3 import DQN
-from tictactoe_env import SmartTicTacToeEnv
+from Tic--Tac-Toe_env import SmartTic--Tac-ToeEnv
 
 # Load model
-model = DQN.load("tictactoe_agent")
-env = SmartTicTacToeEnv()
+model = DQN.load("Tic--Tac-Toe_agent")
+env = SmartTic--Tac-ToeEnv()
 
 # Test gameplay
 obs, _ = env.reset()
@@ -192,7 +205,7 @@ while not done:
 
 ### Customizing AI Difficulty
 
-Modify the opponent strategy in `tictactoe_env.py`:
+Modify the opponent strategy in `Tic--Tac-Toe_env.py`:
 - `'random'`: Easy (random moves)
 - `'smart'`: Medium (strategic but not perfect)
 - `'minimax'`: Hard (optimal play)
@@ -235,6 +248,10 @@ For production deployment, consider:
 - Update documentation as needed
 - Ensure AI training convergence before committing models
 
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## 🙏 Acknowledgments
 
 - **Stable Baselines3** for the DQN implementation
@@ -259,7 +276,11 @@ For production deployment, consider:
 - [ ] Custom board sizes (4x4, 5x5)
 - [ ] AI difficulty slider with real-time adjustment
 
+## 📧 Contact
+
+For questions, suggestions, or collaboration opportunities, please open an issue or reach out via:
+- GitHub Issues: [Create an issue](https://github.com/jahnavigbedre/Tic--Tac-Toe/issues)
+
 ---
 
 **Enjoy playing against our AI! Can you beat the machine? 🤖🎯**
-
